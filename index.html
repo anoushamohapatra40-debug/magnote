@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Fridge | Magnote</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="fridgeScene" class="scene">
+        <div class="kitchen-wall">
+            <div class="cabinet cabinet-left"></div>
+            <div class="cabinet cabinet-right"></div>
+            <div class="counter"></div>
+        </div>
+        <div class="floor"></div>
+        <div class="fridge">
+            <div class="fridge-top">
+                <div class="left-door">
+                    <div class="door-highlight"></div>
+                    <div class="handle left-handle"></div>
+                    <div class="water-dispenser">
+                        <div class="dispenser-panel"><span>ICE</span><span>WATER</span></div>
+                        <div class="dispenser-slot"></div>
+                    </div>
+                </div>
+                <div class="right-door">
+                    <div class="door-highlight"></div>
+                    <div class="handle right-handle"></div>
+                    <button id="openDisplay" class="magnet" aria-label="Open Magnote display">
+                        <div class="magnet-bezel">
+                            <div class="magnet-screen">
+                                <div class="mini-status"><span>●</span><span id="miniWifi">Wi-Fi</span></div>
+                                <div class="mini-time" id="miniTime">16:25</div>
+                                <div class="mini-date" id="miniDate">WEDNESDAY · NOV 18</div>
+                                <div class="mini-weather">🌤️ 28°C</div>
+                                <div class="mini-apps"><span>🥬</span><span>📝</span><span>🍳</span><span>📅</span></div>
+                                <div class="mini-brand">MAGNOTE</div>
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+            <div class="freezer-drawer"><div class="drawer-handle"></div></div>
+            <div class="fridge-bottom-shadow"></div>
+        </div>
+        <div class="scene-caption">
+            <h2>MAGNOTE</h2>
+            <p>Your kitchen, intelligently connected.</p>
+            <button id="zoomButton">Explore your fridge ↗</button>
+        </div>
+    </div>
+
+    <div id="magnetView" class="magnet-view hidden">
+        <header class="topbar">
+            <div class="brand">
+                <button id="backButton" class="back-button" aria-label="Back to fridge">←</button>
+                <div><strong>MAGNOTE</strong><small>Smart Kitchen Hub</small></div>
+            </div>
+            <div class="device-status">
+                <span id="wifiStatus">● Wi-Fi</span>
+                <span id="clock">16:25</span>
+                <button class="top-settings" data-page="settingsPage" aria-label="Settings">⚙</button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <section id="homePage" class="page">
+                <div class="welcome-row">
+                    <div>
+                        <span class="eyebrow">YOUR SMART KITCHEN</span>
+                        <h1>Hello, there 👋</h1>
+                        <p>Let's keep your kitchen healthy.</p>
+                    </div>
+                    <div class="weather-widget"><span>🌤️</span><div><strong>28°C</strong><small>Bengaluru</small></div></div>
+                </div>
+
+                <div class="section-heading"><h3>Kitchen overview</h3><span>Today</span></div>
+                <div class="overview-grid">
+                    <button class="overview-card" data-action="inventory-list">
+                        <span>🥬</span><strong id="itemCount">6</strong><small>Items in fridge</small>
+                        <em>View inventory →</em>
+                    </button>
+                    <button class="overview-card" data-action="expiring-list">
+                        <span>⏳</span><strong id="expiringCount">2</strong><small>Expiring soon</small>
+                        <em>View items →</em>
+                    </button>
+                    <div class="overview-card freshness-card">
+                        <span>💗</span><strong id="freshnessScore">82%</strong><small>Freshness score</small>
+                        <em>Based on estimated shelf life</em>
+                    </div>
+                </div>
+
+                <div class="alert-card">
+                    <div class="alert-icon">⏳</div>
+                    <div class="alert-info"><strong>Food needs your attention</strong><p id="alertText">Spinach expires soon. Use it today!</p></div>
+                    <button data-action="expiring-list">View →</button>
+                </div>
+
+                <div class="recipe-card">
+                    <div><span class="eyebrow">AI RECOMMENDATION</span><h3>What can you cook today?</h3><p>Recipes based on your available ingredients.</p><button data-app="recipes">Explore recipes →</button></div>
+                    <div class="recipe-image">🍳</div>
+                </div>
+
+                <div class="section-heading"><h3>Your applications</h3><button data-page="appsPage">See all →</button></div>
+                <div id="homeApps" class="app-grid"></div>
+                <div class="quick-actions">
+                    <button data-action="Add Food">＋ Add food</button>
+                    <button data-app="recipes">🍳 Find recipe</button>
+                    <button data-app="mobile">📱 Connect phone</button>
+                    <button data-app="notes">📝 Add note</button>
+                </div>
+            </section>
+
+            <section id="appsPage" class="page hidden">
+                <div class="page-heading"><h1>App Library</h1><p>Choose the apps you want on your navigation bar.</p></div>
+                <div id="allApps" class="app-grid"></div>
+            </section>
+
+            <section id="appPage" class="page hidden">
+                <button id="appBack" class="back-link">← Back</button>
+                <div id="appContent"></div>
+            </section>
+
+            <section id="settingsPage" class="page hidden">
+                <div class="page-heading"><h1>Settings ⚙️</h1><p>Personalise your kitchen display.</p></div>
+                <div class="settings-card">
+                    <h3>Bottom navigation</h3>
+                    <p>Add, remove, or rearrange the shortcuts shown at the bottom of your display.</p>
+                    <div id="navManager"></div>
+                    <button id="restoreNav" class="secondary-button">Restore default navigation</button>
+                </div>
+                <div class="settings-card"><h3>Device connectivity</h3><p>Wi-Fi and mobile device management.</p><button data-app="wifi">Wi-Fi settings</button><button data-app="mobile">Mobile pairing</button></div>
+                <div class="settings-card"><h3>Installed applications</h3><div id="moduleList"></div></div>
+            </section>
+        </main>
+        <nav id="bottomNav" class="bottom-nav" aria-label="Main navigation"></nav>
+    </div>
+
+    <div id="modal" class="modal hidden"><div class="modal-content"><button id="closeModal" class="close-modal">✕</button><div id="modalContent"></div></div></div>
+    <div id="toast" class="toast hidden"></div>
+    <script src="app.js"></script>
+</body>
+</html>

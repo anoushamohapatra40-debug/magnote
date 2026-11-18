@@ -1,0 +1,82 @@
+*{box-sizing:border-box}
+:root{
+ --ink:#34313b;--muted:#817d88;--cream:#fffaf2;--paper:#fffdf9;
+ --peach:#f7dfd2;--lavender:#e9e2f5;--blue:#dcebf3;--yellow:#f8edc9;
+ --rose:#f3dce4;--line:#eee5df;--accent:#8b718e;--shadow:0 10px 28px #66545b12;
+}
+body{margin:0;font-family:Inter,Arial,sans-serif;background:#111b20;color:var(--ink)}
+button{font:inherit;cursor:pointer;border:0;transition:.18s ease}
+button:hover{filter:brightness(.97);transform:translateY(-1px)}
+.hidden{display:none!important}
+
+/* Kitchen scene */
+.scene{min-height:100vh;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(90deg,#17252a99,transparent 35%,#17252a66),linear-gradient(180deg,#c3c5bd 0%,#e0dcd0 70%,#a69e8c 100%)}
+.kitchen-wall{position:absolute;inset:0 0 20%;background:repeating-linear-gradient(90deg,transparent 0 98px,#00000012 99px 101px),linear-gradient(180deg,#b8b9ae,#e1ddd1)}
+.cabinet{position:absolute;top:0;width:24%;height:70%;background:linear-gradient(90deg,#8c7660,#b09b82,#826d58);box-shadow:0 5px 14px #0003}
+.cabinet-left{left:0}.cabinet-right{right:0}
+.counter{position:absolute;bottom:0;width:100%;height:15%;background:linear-gradient(#aaa49a,#77736b);box-shadow:0 -5px 15px #0002}
+.floor{position:absolute;bottom:0;height:20%;width:100%;background:repeating-linear-gradient(90deg,transparent 0 115px,#00000012 116px 118px),linear-gradient(#a49a88,#766d5f)}
+.fridge{position:relative;z-index:2;width:min(440px,86vw);height:min(700px,80vh);min-height:500px;display:flex;flex-direction:column;padding:0 5px;border-radius:18px 18px 9px 9px;background:linear-gradient(90deg,#69767b,#c7d0d2 3%,#f0f3f2 9%,#cbd3d5 50%,#f3f5f4 92%,#839096 100%);box-shadow:20px 28px 55px #0007,inset 2px 0 5px #fff9,inset -3px 0 6px #34434b55}
+.fridge-top{height:76%;display:grid;grid-template-columns:1fr 1fr;gap:3px;padding:4px 3px 3px;position:relative}
+.left-door,.right-door{position:relative;overflow:hidden;background:linear-gradient(90deg,#9faeb2,#e5ebeb 5%,#d0d9da 18%,#edf1f0 48%,#c4cdcf 88%,#929fa4);box-shadow:inset 1px 0 3px #fff9,inset -2px 0 4px #65747a44,0 2px 4px #0003}
+.left-door{border-radius:13px 3px 3px 3px}.right-door{border-radius:3px 13px 3px 3px}
+.left-door:before,.right-door:before{content:"";position:absolute;inset:0;opacity:.14;background:repeating-linear-gradient(180deg,transparent 0,#fff 1px,transparent 2px,transparent 4px);pointer-events:none}
+.door-highlight{position:absolute;top:0;left:10%;height:100%;width:30%;background:linear-gradient(90deg,transparent,#ffffff30,transparent)}
+.handle{position:absolute;top:17%;height:35%;width:9px;border-radius:10px;background:linear-gradient(90deg,#67757b,#f4f7f6 25%,#a8b3b6 60%,#657279);box-shadow:2px 3px 5px #0004,inset 1px 0 2px #fff}
+.left-handle{right:12px}.right-handle{left:12px}
+.water-dispenser{position:absolute;width:68px;height:125px;left:15%;bottom:12%;background:linear-gradient(90deg,#6d7a7f,#b8c2c3,#59676c);border-radius:5px;box-shadow:inset 0 2px 5px #fff7,2px 3px 6px #0003;padding:8px}
+.dispenser-panel{display:flex;justify-content:space-between;font-size:6px;color:#34454b;font-weight:bold}.dispenser-slot{margin-top:15px;height:65px;border-radius:4px;background:linear-gradient(90deg,#26373d,#63767c,#26373d);box-shadow:inset 0 3px 6px #0009}
+.freezer-drawer{flex:1;min-height:22%;margin:0 3px 4px;border-radius:3px 3px 8px 8px;background:linear-gradient(90deg,#7f8c91,#dce3e3 5%,#edf0ef 18%,#c8d0d1 80%,#8a969a);position:relative;box-shadow:inset 0 3px 4px #ffffffaa,0 3px 5px #0003}
+.drawer-handle{position:absolute;top:23px;left:50%;transform:translateX(-50%);width:100px;height:8px;border-radius:8px;background:linear-gradient(90deg,#66757a,#f6f8f7,#738086);box-shadow:0 2px 4px #0005}
+.fridge-bottom-shadow{position:absolute;bottom:-12px;left:10%;width:80%;height:15px;background:#0006;filter:blur(9px)}
+
+/* Landscape magnet */
+.magnet{position:absolute;z-index:3;top:39%;left:50%;transform:translate(-50%,-50%);padding:5px;width:174px;height:112px;background:#15171b;border-radius:11px;box-shadow:0 7px 18px #0007,inset 0 0 0 2px #626c70}
+.magnet:hover{transform:translate(-50%,-50%) scale(1.045)}
+.magnet-bezel{width:100%;height:100%;padding:4px;background:#101a1f;border-radius:8px}
+.magnet-screen{height:100%;background:linear-gradient(145deg,#f8e9df,#e9e2f5);border-radius:5px;padding:6px 9px;display:grid;grid-template-columns:1fr auto;grid-template-rows:auto 1fr auto;align-items:center;color:#393442}
+.mini-status{grid-column:1;display:flex;gap:5px;font-size:8px;color:#75657e}.mini-time{grid-column:2;grid-row:1;font-size:13px;font-weight:750}.mini-date{grid-column:1;grid-row:2;font-size:7px;color:#746d78}.mini-weather{grid-column:2;grid-row:2;font-size:11px}.mini-apps{grid-column:1;grid-row:3;display:flex;gap:7px;font-size:12px}.mini-brand{grid-column:2;grid-row:3;font-size:6px;letter-spacing:1px;color:#806d86}
+.scene-caption{position:absolute;bottom:30px;z-index:2;text-align:center;color:#fff;text-shadow:0 2px 5px #0008}.scene-caption h2{letter-spacing:5px;font-size:16px}.scene-caption p{font-size:12px}.scene-caption button{background:#f3e5df;color:#4b4149;text-shadow:none;border-radius:30px;padding:12px 25px}
+
+/* Display shell */
+.magnet-view{position:fixed;inset:0;z-index:10;background:linear-gradient(145deg,#fdf7ef,#f7f0f5 55%,#eef5f8);display:flex;flex-direction:column;animation:zoomIn .3s ease}
+@keyframes zoomIn{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+.topbar{padding:12px 5%;min-height:62px;background:#fffaf4dd;backdrop-filter:blur(14px);display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e9dfdc}
+.brand{display:flex;align-items:center;gap:12px}.brand strong{display:block;font-size:14px;letter-spacing:2px}.brand small{display:block;font-size:10px;color:var(--muted);margin-top:3px}
+.back-button,.top-settings{border-radius:9px;padding:8px 12px;background:#eee6ef;color:#514858}
+.device-status{display:flex;gap:18px;align-items:center;font-size:12px;color:#81758a}.top-settings{font-size:16px;padding:6px 10px}
+.main-content{width:100%;max-width:1040px;margin:0 auto;padding:24px 28px;flex:1;overflow-y:auto}
+.page{animation:pageIn .2s ease}@keyframes pageIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.welcome-row{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:23px}
+.eyebrow{font-size:10px;letter-spacing:2px;color:#967c9b}
+.welcome-row h1,.page-heading h1{font-size:clamp(24px,3vw,34px);margin:8px 0;color:#3c3542}
+.welcome-row p,.page-heading p{color:var(--muted);font-size:13px;margin:0}
+.weather-widget{display:flex;gap:10px;align-items:center;background:var(--blue);padding:12px 16px;border-radius:16px}.weather-widget>span{font-size:25px}.weather-widget strong,.weather-widget small{display:block}.weather-widget small{font-size:10px;color:#7c8790;margin-top:4px}
+.section-heading{display:flex;justify-content:space-between;align-items:center;margin:22px 0 11px}.section-heading h3{font-size:15px;margin:0}.section-heading>span{font-size:11px;color:var(--muted)}.section-heading button{background:transparent;color:#8a718e;font-size:11px}
+.overview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.overview-card{padding:14px 16px;background:var(--peach);border:1px solid #ead5cb;border-radius:15px;color:var(--ink);text-align:left;display:flex;flex-direction:column;align-items:flex-start;min-height:125px}
+.overview-card:nth-child(2){background:var(--yellow);border-color:#eee2bd}.overview-card:nth-child(3){background:var(--lavender);border-color:#ded4ed}
+.overview-card>span{font-size:20px}.overview-card strong{font-size:23px;margin:7px 0 2px}.overview-card small{font-size:11px;color:#746d78}.overview-card em{font-style:normal;font-size:9px;color:#827589;margin-top:9px}
+.alert-card{display:flex;gap:13px;align-items:center;background:#fff0e6;border:1px solid #f0d8c9;padding:14px 16px;margin-top:14px;border-radius:15px}
+.alert-icon{font-size:23px}.alert-info{flex:1}.alert-info strong{font-size:12px}.alert-info p{font-size:11px;color:#8c7772;margin:5px 0 0}.alert-card button,.recipe-card button{background:#fffaf4;color:#725d73;font-size:11px;font-weight:700;border-radius:9px;padding:9px 11px}
+.recipe-card{background:linear-gradient(115deg,#e8e1f3,#f8e6df);margin-top:14px;padding:18px 20px;border-radius:16px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.recipe-card h3{font-size:17px;margin:8px 0;color:#423849}.recipe-card p{color:#827783;font-size:11px}.recipe-image{font-size:50px}
+.app-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
+.app-card{padding:13px;background:#fffdf9;border:1px solid var(--line);border-radius:14px;color:var(--ink);text-align:left;min-width:0;box-shadow:0 3px 12px #66545b08}
+.app-card:hover{background:#fff7f2;transform:translateY(-2px)}.app-icon{width:40px;height:40px;display:flex;justify-content:center;align-items:center;font-size:22px;background:var(--lavender);border-radius:12px;margin-bottom:10px}
+.app-card strong{font-size:12px}.app-card small{display:block;color:var(--muted);font-size:10px;margin-top:5px}
+.quick-actions{display:flex;flex-wrap:wrap;gap:8px;margin:15px 0 22px}.quick-actions button,.secondary-button{background:#eee7f2;color:#66566c;padding:10px 13px;font-size:11px;border-radius:9px}
+.page-heading{margin:6px 0 20px}.back-link{background:transparent;color:#8b718e;padding:8px 0;margin-bottom:15px}
+.app-header{display:flex;align-items:center;gap:15px;margin-bottom:22px}.app-header .app-icon{width:56px;height:56px;font-size:28px;margin:0}.app-header h2{margin:0 0 5px;font-size:23px}.app-header p{margin:0;color:var(--muted);font-size:12px}
+.feature,.settings-card{background:#fffdf9;padding:16px;border-radius:14px;margin:12px 0;border:1px solid var(--line);box-shadow:var(--shadow)}
+.feature h3,.settings-card h3{font-size:14px;margin:0 0 8px}.feature button,.settings-card button{background:#eee5f1;color:#5f5267;border-radius:8px;padding:10px 12px;margin:4px;font-size:11px}.feature-result{padding:14px;background:#f2edf7;border-radius:11px;color:#5f5267;font-size:12px;margin-top:14px;line-height:1.7}
+.settings-card p{color:var(--muted);font-size:12px}.module-row{padding:11px 0;border-bottom:1px solid var(--line);font-size:12px}
+.inventory-toolbar{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}.inventory-toolbar button{background:#eee7f2;color:#67566d;padding:9px 12px;border-radius:9px;font-size:11px}
+.inventory-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.food-item{background:#fffdf9;border:1px solid var(--line);border-radius:13px;padding:14px}.food-item-top{display:flex;justify-content:space-between;gap:8px}.food-item h3{font-size:14px;margin:0 0 5px}.food-meta{font-size:11px;color:var(--muted)}.freshness-track{height:7px;background:#eee9e8;border-radius:20px;overflow:hidden;margin:11px 0 6px}.freshness-fill{height:100%;border-radius:20px}.freshness-label{display:flex;justify-content:space-between;font-size:10px;color:var(--muted)}.status-pill{font-size:9px;padding:5px 8px;border-radius:20px;background:#e9e2f5;color:#665575;white-space:nowrap}.status-pill.urgent{background:#f8e1d8;color:#a35c4c}.status-pill.soon{background:#f8edcf;color:#8d7440}.food-item button{margin-top:10px;background:#f2edf5;color:#695a70;border-radius:7px;padding:7px 9px;font-size:10px}
+.nav-manager-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}.nav-manager-row strong{font-size:12px}.nav-manager-row small{display:block;color:var(--muted);font-size:10px;margin-top:3px}.nav-manager-actions{display:flex;gap:5px}.nav-manager-actions button{margin:0;padding:7px 9px}.nav-add-list{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}.nav-add-list button{margin:0}
+.bottom-nav{min-height:68px;background:#fffaf4ed;backdrop-filter:blur(14px);border-top:1px solid #e9dfdc;display:flex;justify-content:center;gap:clamp(28px,9vw,100px);align-items:center;padding:7px 16px}
+.bottom-nav button{background:transparent;color:#a198a5;display:flex;flex-direction:column;align-items:center;gap:4px;min-width:52px;font-size:19px}.bottom-nav button.active{color:#806887}.bottom-nav small{font-size:10px}
+.modal{position:fixed;inset:0;background:#28212d88;z-index:20;display:flex;align-items:center;justify-content:center;padding:20px}.modal-content{width:min(420px,100%);max-height:85vh;overflow:auto;background:#fffaf5;padding:25px;border-radius:17px;position:relative;color:var(--ink);box-shadow:0 20px 70px #0003}.close-modal{position:absolute;right:15px;top:15px;background:transparent;color:#6d6270}.modal-content input{display:block;width:100%;padding:11px;margin:10px 0;border:1px solid #e6dce3;border-radius:9px;background:#fffdfb;font:inherit}.modal-content button:not(.close-modal){background:#e9e1f1;color:#5c4f65;border-radius:9px;padding:10px 13px;margin:5px 3px}
+.toast{position:fixed;bottom:85px;left:50%;transform:translateX(-50%);background:#e8dfef;color:#54465e;border-radius:9px;padding:12px 20px;z-index:30;font-size:12px;box-shadow:0 5px 20px #0002}
+@media(max-width:650px){.fridge{width:82vw;height:65vh;min-height:430px}.water-dispenser{transform:scale(.8);transform-origin:bottom left}.magnet{width:150px;height:98px}.scene-caption{bottom:15px}.main-content{padding:17px}.app-grid{grid-template-columns:repeat(3,1fr);gap:8px}.app-card{padding:10px}.overview-grid{gap:7px}.overview-card{padding:10px;min-height:115px}.overview-card strong{font-size:19px}.welcome-row h1{font-size:23px}.device-status{gap:8px;font-size:10px}.bottom-nav{gap:0;justify-content:space-around}.alert-card{flex-wrap:wrap}.inventory-list{grid-template-columns:1fr}.topbar{padding:10px 14px}}
+@media(max-width:390px){.overview-card small{font-size:9px}.overview-card em{font-size:8px}.weather-widget{padding:9px}.app-grid{grid-template-columns:repeat(2,1fr)}}
